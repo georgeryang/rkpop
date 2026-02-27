@@ -371,8 +371,8 @@
                 console.log('  → Categorized as Album');
                 return 'album';
             } 
-            // Songs: Audio, Song, Single, Digital Single
-            else if (flair.includes('audio') || flair.includes('song') || flair.includes('single') || flair.includes('digital')) {
+            // Songs: Audio
+            else if (flair.includes('audio')) {
                 console.log('  → Categorized as Song');
                 return 'song';
             }

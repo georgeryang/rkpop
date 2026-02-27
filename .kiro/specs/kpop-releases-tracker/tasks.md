@@ -32,7 +32,7 @@ This plan implements a minimal single-file HTML application that fetches and dis
     - _Requirements: 2.5, 2.6_
   
   - [x] 2.3 Create categorizePost() function
-    - Check link_flair_text for [MV], [Album], [Song] (case-insensitive)
+    - Check link_flair_text for [MV], [Album], [Audio] (case-insensitive)
     - Return 'mv', 'album', 'song', or skip if no match
     - Support teaser mode to show posts with "teaser" flair
     - _Requirements: 4.1, 4.2, 4.3, 4.4_
@@ -40,12 +40,13 @@ This plan implements a minimal single-file HTML application that fetches and dis
   - [x] 2.4 Create renderResults() function
     - Clear previous results
     - Create sections for each category
+    - Sort posts by newest first within each category
     - Render posts with title links, dates, and timestamps in local time
     - Use toLocaleDateString() for date formatting
     - Use toLocaleTimeString() for time formatting (12-hour with AM/PM)
     - Display thumbnails when available
     - Show "No releases found" if empty
-    - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5_
+    - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5, 4.6_
 
 - [x] 3. Implement UI controller and initialization
   - [x] 3.1 Create main loadReleases() function

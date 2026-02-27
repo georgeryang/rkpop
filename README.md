@@ -6,7 +6,8 @@ A simple, single-file web app that displays recent K-pop releases and teasers fr
 
 - View new releases from the last 24 hours (default)
 - Browse teasers for upcoming releases
-- Organized by type: Music Videos, Albums, and Songs
+- Organized by type: Music Videos, Albums, and Songs (Audio)
+- Sorted by newest first within each category
 - Shows post date and time in your local timezone
 - Works on desktop, iPad, and mobile
 - No installation required

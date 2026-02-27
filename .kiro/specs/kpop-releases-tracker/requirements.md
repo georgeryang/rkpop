@@ -10,7 +10,7 @@ The K-pop Releases Tracker is a browser-based tool that fetches and displays K-p
 - **Release_Post**: A Reddit post from r/kpop that announces a K-pop music release
 - **Time_Range**: A period specification for filtering posts (24 hours, 7 days, 30 days, or custom dates)
 - **Release_Type**: A category of K-pop release (Music Video, Album, or Song)
-- **Flair_Tag**: A Reddit post flair marker ([MV], [Album], or [Song])
+- **Flair_Tag**: A Reddit post flair marker ([MV], [Album], or [Audio])
 - **Results_Display**: The organized presentation of filtered Release_Posts in the browser
 - **Reddit_JSON_API**: Reddit's public JSON endpoint for accessing subreddit data
 - **Custom_Date_Range**: A user-specified start and end date for filtering posts
@@ -58,9 +58,9 @@ The K-pop Releases Tracker is a browser-based tool that fetches and displays K-p
 1. THE Tracker SHALL categorize Release_Posts into three Release_Types: Music Video, Album, and Song
 2. WHEN a Release_Post contains the Flair_Tag "[MV]", THE Tracker SHALL categorize it as Music Video
 3. WHEN a Release_Post contains the Flair_Tag "[Album]", THE Tracker SHALL categorize it as Album
-4. WHEN a Release_Post contains the Flair_Tag "[Song]", THE Tracker SHALL categorize it as Song
-5. WHERE a Release_Post lacks a Flair_Tag, THE Tracker SHALL use keyword matching on the post title to determine the Release_Type
-6. THE Tracker SHALL display categorized Release_Posts in separate sections within the Results_Display
+4. WHEN a Release_Post contains the Flair_Tag "[Audio]", THE Tracker SHALL categorize it as Song
+5. THE Tracker SHALL display categorized Release_Posts in separate sections within the Results_Display
+6. THE Tracker SHALL sort posts within each category by newest first
 
 ### Requirement 5: Results Display
 

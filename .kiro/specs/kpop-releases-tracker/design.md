@@ -158,16 +158,16 @@ function categorizePost(post) {
 
 **Categorization Logic**:
 
-1. **Flair-Based Detection** (Priority 1):
-   - Check `link_flair_text` field for `[MV]`, `[Album]`, `[Song]`
+1. **Flair-Based Detection**:
+   - Check `link_flair_text` field for `[MV]`, `[Album]`, `[Audio]`
    - Case-insensitive matching
 
-2. **Keyword-Based Detection** (Priority 2 - if no flair):
-   - Music Video: Keywords in title: "MV", "M/V", "Music Video", "뮤직비디오"
-   - Album: Keywords: "Album", "EP", "Mini Album", "Full Album", "앨범"
-   - Song: Keywords: "Song", "Single", "Digital Single", "싱글"
+2. **Category Mapping**:
+   - Music Video: Flair contains "MV", "M/V", or "Music Video"
+   - Album: Flair contains "Album", "EP", or "Mini"
+   - Song: Flair contains "Audio"
 
-3. **Default**: If no match, categorize as "other" (not displayed)
+3. **Default**: If no match, post is not displayed
 
 ### 6. Results Renderer Component
 
