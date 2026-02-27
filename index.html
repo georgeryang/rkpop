@@ -308,9 +308,12 @@
                 
                 // Fetch multiple pages to get ~100 posts
                 for (let i = 0; i < 4; i++) {
-                    const url = after 
+                    const redditUrl = after 
                         ? `https://www.reddit.com/r/kpop.json?limit=25&after=${after}`
                         : 'https://www.reddit.com/r/kpop.json?limit=25';
+                    
+                    // Use CORS proxy to bypass browser restrictions
+                    const url = `https://corsproxy.io/?${encodeURIComponent(redditUrl)}`;
                     
                     const response = await fetch(url);
                     if (!response.ok) {
