@@ -112,10 +112,11 @@ async function fetchRedditPosts() {
 ```
 
 **Implementation Strategy**:
-- Primary: Use `fetch()` with Reddit's JSON endpoint (`https://www.reddit.com/r/kpop.json`)
-- CORS Handling: Reddit's JSON API supports CORS for public endpoints
-- Fallback: If CORS issues occur, provide user instructions for local server setup
-- Limit: Fetch up to 100 posts (Reddit's default limit)
+- Primary: Use CORS proxy (corsproxy.io) to forward requests to Reddit's JSON endpoint
+- Endpoint: `https://corsproxy.io/?${encodeURIComponent('https://www.reddit.com/r/kpop.json')}`
+- The proxy adds necessary CORS headers to allow browser access from any domain
+- Works on GitHub Pages, local files, and any static hosting
+- Limit: Fetch up to 100 posts (4 pages of 25 posts each)
 
 **Error Handling**:
 - Network errors: Display user-friendly error message
@@ -181,9 +182,10 @@ function renderResults(categorizedPosts) {
 ```
 
 **Rendering Details**:
-- Each post displays: Title (as link), Date, Score (optional)
+- Each post displays: Title (as link), Date, Time (in local timezone), Score (optional)
 - Links open in new tab (`target="_blank"` with `rel="noopener noreferrer"`)
 - Date formatting: Human-readable format (e.g., "Jan 15, 2024")
+- Time formatting: 12-hour format with AM/PM (e.g., "3:45 PM")
 - Empty state: "No releases found" message when category is empty
 - Sections: Separate visual sections for MV, Album, Song
 
@@ -313,15 +315,14 @@ Represents a date range for filtering.
 
 ### CORS Errors
 
-**Scenario**: Browser blocks request due to CORS policy (primarily when opening as local file).
+**Scenario**: Browser blocks request due to CORS policy.
 
 **Handling**:
-- Detect CORS errors from fetch rejection
-- Display instructional message with solutions:
-  - Option 1: Run a local web server (provide command examples)
-  - Option 2: Use browser flags to disable CORS (with security warning)
-  - Option 3: Host the file on a web server
-- Note: Reddit's public JSON API typically allows CORS, so this should be rare
+- Use CORS proxy (corsproxy.io) to bypass browser restrictions
+- The proxy forwards requests to Reddit and adds necessary CORS headers
+- Works on GitHub Pages, local files, and any static hosting
+- If proxy service is down, display error message with alternative proxy suggestions
+- Log technical error details to console for debugging
 
 ### JSON Parsing Errors
 

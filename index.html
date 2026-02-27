@@ -449,6 +449,11 @@
                     day: 'numeric', 
                     year: 'numeric' 
                 });
+                const timeStr = date.toLocaleTimeString('en-US', {
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    hour12: true
+                });
                 
                 // Check if thumbnail is valid (not default Reddit placeholders)
                 const hasValidThumbnail = post.thumbnail && 
@@ -461,7 +466,7 @@
                         <div class="release-title">
                             <span>${post.title}</span>
                         </div>
-                        <div class="release-date">${dateStr}</div>
+                        <div class="release-date">${dateStr} at ${timeStr}</div>
                     </div>
                     ${hasValidThumbnail 
                         ? `<img src="${post.thumbnail}" alt="Thumbnail" class="release-thumbnail" onerror="this.style.display='none'">` 

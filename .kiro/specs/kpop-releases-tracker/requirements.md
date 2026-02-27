@@ -68,20 +68,22 @@ The K-pop Releases Tracker is a browser-based tool that fetches and displays K-p
 
 #### Acceptance Criteria
 
-1. THE Tracker SHALL display each Release_Post with its title, posting date, and Release_Type
+1. THE Tracker SHALL display each Release_Post with its title, posting date, timestamp in local time, and Release_Type
 2. THE Tracker SHALL render each Release_Post title as a clickable hyperlink to the original Reddit post
 3. THE Tracker SHALL organize the Results_Display with clear visual separation between Release_Types
 4. WHEN no Release_Posts match the selected Time_Range, THE Tracker SHALL display a message indicating no releases were found
+5. THE Tracker SHALL display timestamps in the user's local timezone with 12-hour format
 
 ### Requirement 6: CORS Handling
 
-**User Story:** As a user, I want the tracker to work when opened as a local file, so that I don't need to set up a web server.
+**User Story:** As a user, I want the tracker to work when opened as a local file or deployed to GitHub Pages, so that I can access it from anywhere.
 
 #### Acceptance Criteria
 
-1. THE Tracker SHALL handle Cross-Origin Resource Sharing (CORS) restrictions when accessing the Reddit_JSON_API from a local file
-2. WHERE CORS restrictions prevent direct API access, THE Tracker SHALL use the Reddit_JSON_API's JSONP support or append ".json" to subreddit URLs
-3. IF CORS restrictions cannot be resolved, THEN THE Tracker SHALL display instructions for opening the file with a local web server or browser flags
+1. THE Tracker SHALL handle Cross-Origin Resource Sharing (CORS) restrictions when accessing the Reddit_JSON_API from any domain
+2. THE Tracker SHALL use a CORS proxy service (corsproxy.io) to bypass browser CORS restrictions
+3. THE Tracker SHALL work correctly when deployed to GitHub Pages or similar static hosting services
+4. THE Tracker SHALL work correctly when opened as a local file in modern browsers
 
 ### Requirement 7: Data Limitations
 
