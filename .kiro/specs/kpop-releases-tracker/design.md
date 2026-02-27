@@ -189,12 +189,14 @@ function renderResults(categorizedPosts) {
 ```
 
 **Rendering Details**:
-- Each post displays: Title (as link), Date, Time (in local timezone), Score (optional)
+- Each post displays: Thumbnail (left side), Title (as link), Date, Time (in local timezone), Score (optional)
+- Thumbnails: Always show a thumbnail - either the post's image or a fire emoji (🔥) placeholder
+- Thumbnail position: Left side of each post item
 - Links open in new tab (`target="_blank"` with `rel="noopener noreferrer"`)
 - Date formatting: Human-readable format (e.g., "Jan 15, 2024")
 - Time formatting: 12-hour format with AM/PM (e.g., "3:45 PM")
 - Empty state: "No releases found" message when category is empty
-- Sections: Separate visual sections for MV, Album, Song
+- Sections: Separate visual sections for Teaser, MV, Album, Song
 
 ### 7. UI Controller Component
 

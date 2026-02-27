@@ -44,12 +44,13 @@ This plan implements a minimal single-file HTML application that fetches and dis
     - Clear previous results
     - Create separate sections for Teasers, Music Videos, Albums, and Songs
     - Sort posts by newest first within each category
-    - Render posts with title links, dates, and timestamps in local time
+    - Render posts with thumbnails on the left, title links, dates, and timestamps in local time
+    - Always show a thumbnail: post image or fire emoji (🔥) placeholder
     - Use toLocaleDateString() for date formatting
     - Use toLocaleTimeString() for time formatting (12-hour with AM/PM)
-    - Display thumbnails when available
+    - Handle thumbnail loading errors with fire emoji fallback
     - Show "No releases found" if empty
-    - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5, 4.7_
+    - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 4.7_
 
 - [x] 3. Implement UI controller and initialization
   - [x] 3.1 Create main loadReleases() function

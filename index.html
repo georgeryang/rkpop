@@ -176,6 +176,7 @@
             border-radius: 6px;
             object-fit: cover;
             flex-shrink: 0;
+            order: -1;
         }
 
         .release-thumbnail.placeholder {
@@ -184,7 +185,7 @@
             align-items: center;
             justify-content: center;
             color: #999;
-            font-size: 20px;
+            font-size: 24px;
         }
 
         .release-title {
@@ -479,16 +480,16 @@
                     !post.thumbnail.includes('default');
                 
                 a.innerHTML = `
+                    ${hasValidThumbnail 
+                        ? `<img src="${post.thumbnail}" alt="Thumbnail" class="release-thumbnail" onerror="this.outerHTML='<div class=\\'release-thumbnail placeholder\\'>🔥</div>'">` 
+                        : '<div class="release-thumbnail placeholder">🔥</div>'
+                    }
                     <div class="release-content">
                         <div class="release-title">
                             <span>${post.title}</span>
                         </div>
                         <div class="release-date">${dateStr} at ${timeStr}</div>
                     </div>
-                    ${hasValidThumbnail 
-                        ? `<img src="${post.thumbnail}" alt="Thumbnail" class="release-thumbnail" onerror="this.style.display='none'">` 
-                        : '<div class="release-thumbnail placeholder">🎵</div>'
-                    }
                 `;
                 
                 const li = document.createElement('li');

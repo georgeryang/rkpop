@@ -71,11 +71,13 @@ The K-pop Releases Tracker is a browser-based tool that fetches and displays K-p
 
 #### Acceptance Criteria
 
-1. THE Tracker SHALL display each Release_Post with its title, posting date, timestamp in local time, and Release_Type
-2. THE Tracker SHALL render each Release_Post title as a clickable hyperlink to the original Reddit post
-3. THE Tracker SHALL organize the Results_Display with clear visual separation between Release_Types
-4. WHEN no Release_Posts match the selected Time_Range, THE Tracker SHALL display a message indicating no releases were found
-5. THE Tracker SHALL display timestamps in the user's local timezone with 12-hour format
+1. THE Tracker SHALL display each Release_Post with its thumbnail, title, posting date, timestamp in local time, and Release_Type
+2. THE Tracker SHALL display thumbnails on the left side of each post
+3. THE Tracker SHALL always display a thumbnail - either the post's image or a fire emoji (🔥) placeholder
+4. THE Tracker SHALL render each Release_Post title as a clickable hyperlink to the original Reddit post
+5. THE Tracker SHALL organize the Results_Display with clear visual separation between Release_Types
+6. WHEN no Release_Posts match the selected Time_Range, THE Tracker SHALL display a message indicating no releases were found
+7. THE Tracker SHALL display timestamps in the user's local timezone with 12-hour format
 
 ### Requirement 6: CORS Handling
 
