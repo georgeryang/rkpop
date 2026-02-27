@@ -436,7 +436,10 @@
                 return;
             }
             
-            posts.forEach(post => {
+            // Sort posts by timestamp, newest first
+            const sortedPosts = [...posts].sort((a, b) => b.created_utc - a.created_utc);
+            
+            sortedPosts.forEach(post => {
                 const a = document.createElement('a');
                 a.href = post.url;
                 a.target = '_blank';
