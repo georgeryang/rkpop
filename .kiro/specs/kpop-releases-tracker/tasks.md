@@ -7,10 +7,13 @@ This plan implements a minimal single-file HTML application that fetches and dis
 ## Tasks
 
 - [x] 1. Create HTML structure with embedded CSS
-  - Create kpop-releases.html with basic HTML5 structure
-  - Add header with title
+  - Create index.html with basic HTML5 structure
+  - Add header with title (🔥 K-pop Tracker)
+  - Add favicon with fire emoji (🔥)
+  - Add mode selection buttons (New Releases and Teasers)
   - Add time range buttons (24h and 7d only)
-  - Add results container with sections for Music Videos, Albums, and Songs
+  - Add results container with sections for Teasers, Music Videos, Albums, and Songs
+  - Add collapsible sections with emojis: 👀 Teasers, 🎬 Music Videos, 💿 Albums, 🎵 Songs
   - Add simple loading message div
   - Add embedded CSS with basic responsive styling (one breakpoint at 768px)
   - Style buttons to be touch-friendly (min 44px height) with rounded corners
@@ -32,21 +35,21 @@ This plan implements a minimal single-file HTML application that fetches and dis
     - _Requirements: 2.5, 2.6_
   
   - [x] 2.3 Create categorizePost() function
-    - Check link_flair_text for [MV], [Album], [Audio] (case-insensitive)
-    - Return 'mv', 'album', 'song', or skip if no match
-    - Support teaser mode to show posts with "teaser" flair
-    - _Requirements: 4.1, 4.2, 4.3, 4.4_
+    - Check link_flair_text for [Teaser], [MV], [Album], [Audio] (case-insensitive)
+    - Return 'teaser', 'mv', 'album', 'song', or skip if no match
+    - Support mode-based filtering (teasers vs releases)
+    - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5, 4.8, 4.9_
   
   - [x] 2.4 Create renderResults() function
     - Clear previous results
-    - Create sections for each category
+    - Create separate sections for Teasers, Music Videos, Albums, and Songs
     - Sort posts by newest first within each category
     - Render posts with title links, dates, and timestamps in local time
     - Use toLocaleDateString() for date formatting
     - Use toLocaleTimeString() for time formatting (12-hour with AM/PM)
     - Display thumbnails when available
     - Show "No releases found" if empty
-    - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5, 4.6_
+    - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5, 4.7_
 
 - [x] 3. Implement UI controller and initialization
   - [x] 3.1 Create main loadReleases() function

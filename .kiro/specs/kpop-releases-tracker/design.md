@@ -74,9 +74,11 @@ sequenceDiagram
 **Responsibility**: Provides the semantic structure and layout containers for the application.
 
 **Key Elements**:
-- Header with title and description
+- Header with title (🔥 K-pop Tracker) and description
 - Time range selection controls (24h and 7d buttons)
+- Mode selection (New Releases and Teasers buttons)
 - Results container with sections for each release type
+- Collapsible sections with emojis: 👀 Teasers, 🎬 Music Videos, 💿 Albums, 🎵 Songs
 - Error/status message area
 - Loading indicator
 
@@ -159,15 +161,20 @@ function categorizePost(post) {
 **Categorization Logic**:
 
 1. **Flair-Based Detection**:
-   - Check `link_flair_text` field for `[MV]`, `[Album]`, `[Audio]`
+   - Check `link_flair_text` field for `[Teaser]`, `[MV]`, `[Album]`, `[Audio]`
    - Case-insensitive matching
 
 2. **Category Mapping**:
+   - Teaser: Flair contains "Teaser"
    - Music Video: Flair contains "MV", "M/V", or "Music Video"
    - Album: Flair contains "Album", "EP", or "Mini"
    - Song: Flair contains "Audio"
 
-3. **Default**: If no match, post is not displayed
+3. **Mode-Based Display**:
+   - Teasers mode: Show only Teaser section
+   - Releases mode: Show Music Video, Album, and Song sections
+
+4. **Default**: If no match, post is not displayed
 
 ### 6. Results Renderer Component
 
@@ -241,6 +248,7 @@ Represents posts organized by release type.
 
 ```javascript
 {
+  teaser: Array<RedditPost>,  // Teaser posts
   mv: Array<RedditPost>,      // Music video posts
   album: Array<RedditPost>,   // Album posts
   song: Array<RedditPost>     // Song posts

@@ -246,7 +246,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>🎵 K-pop Tracker</h1>
+            <h1>🔥 K-pop Tracker</h1>
             <p class="subtitle">New releases and teasers from r/kpop</p>
         </header>
 
@@ -259,6 +259,16 @@
         <div id="error"></div>
 
         <div id="results" class="results">
+            <div class="category" id="teaser-section">
+                <div class="category-header" onclick="toggleCategory('teaser')">
+                    <h2>👀 Teasers</h2>
+                    <span class="collapse-icon" id="teaser-icon">▼</span>
+                </div>
+                <div class="category-content" id="teaser-content">
+                    <ul id="teaser-list" class="release-list"></ul>
+                </div>
+            </div>
+
             <div class="category" id="mv-section">
                 <div class="category-header" onclick="toggleCategory('mv')">
                     <h2>🎬 Music Videos</h2>
@@ -281,7 +291,7 @@
 
             <div class="category" id="song-section">
                 <div class="category-header" onclick="toggleCategory('song')">
-                    <h2>🎤 Songs</h2>
+                    <h2>🎵 Songs</h2>
                     <span class="collapse-icon" id="song-icon">▼</span>
                 </div>
                 <div class="category-content" id="song-content">
@@ -385,6 +395,7 @@
         // Categorize all posts
         function categorizePosts(posts, mode = 'releases') {
             const categorized = {
+                teaser: [],
                 mv: [],
                 album: [],
                 song: []
@@ -395,8 +406,7 @@
                     // For teasers mode, only show posts with "teaser" flair
                     const flair = post.link_flair_text.toLowerCase().trim();
                     if (flair.includes('teaser')) {
-                        // Put all teasers in the MV category for simplicity
-                        categorized.mv.push(post);
+                        categorized.teaser.push(post);
                     }
                 } else {
                     // For releases mode, use normal categorization
@@ -412,16 +422,19 @@
 
         // Render results to DOM
         function renderResults(categorized) {
+            const teaserList = document.getElementById('teaser-list');
             const mvList = document.getElementById('mv-list');
             const albumList = document.getElementById('album-list');
             const songList = document.getElementById('song-list');
             
             // Clear previous results
+            teaserList.innerHTML = '';
             mvList.innerHTML = '';
             albumList.innerHTML = '';
             songList.innerHTML = '';
             
             // Render each category
+            renderCategory(teaserList, categorized.teaser);
             renderCategory(mvList, categorized.mv);
             renderCategory(albumList, categorized.album);
             renderCategory(songList, categorized.song);
@@ -506,6 +519,7 @@
                 
                 const categorized = categorizePosts(filtered, mode);
                 console.log('Categorized:', {
+                    teaser: categorized.teaser.length,
                     mv: categorized.mv.length,
                     album: categorized.album.length,
                     song: categorized.song.length
@@ -524,22 +538,21 @@
 
         // Update section headers based on mode
         function updateSectionHeaders(mode) {
-            const mvHeader = document.querySelector('#mv-section h2');
-            const albumHeader = document.querySelector('#album-section h2');
-            const songHeader = document.querySelector('#song-section h2');
+            const teaserSection = document.getElementById('teaser-section');
+            const mvSection = document.getElementById('mv-section');
+            const albumSection = document.getElementById('album-section');
+            const songSection = document.getElementById('song-section');
             
             if (mode === 'teasers') {
-                mvHeader.textContent = '🎬 Teasers';
-                albumHeader.textContent = '';
-                songHeader.textContent = '';
-                document.getElementById('album-section').style.display = 'none';
-                document.getElementById('song-section').style.display = 'none';
+                teaserSection.style.display = 'block';
+                mvSection.style.display = 'none';
+                albumSection.style.display = 'none';
+                songSection.style.display = 'none';
             } else {
-                mvHeader.textContent = '🎬 Music Videos';
-                albumHeader.textContent = '💿 Albums';
-                songHeader.textContent = '🎤 Songs';
-                document.getElementById('album-section').style.display = 'block';
-                document.getElementById('song-section').style.display = 'block';
+                teaserSection.style.display = 'none';
+                mvSection.style.display = 'block';
+                albumSection.style.display = 'block';
+                songSection.style.display = 'block';
             }
         }
 

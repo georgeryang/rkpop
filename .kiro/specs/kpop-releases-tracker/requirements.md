@@ -9,8 +9,8 @@ The K-pop Releases Tracker is a browser-based tool that fetches and displays K-p
 - **Tracker**: The K-pop Releases Tracker system
 - **Release_Post**: A Reddit post from r/kpop that announces a K-pop music release
 - **Time_Range**: A period specification for filtering posts (24 hours, 7 days, 30 days, or custom dates)
-- **Release_Type**: A category of K-pop release (Music Video, Album, or Song)
-- **Flair_Tag**: A Reddit post flair marker ([MV], [Album], or [Audio])
+- **Release_Type**: A category of K-pop release (Teaser, Music Video, Album, or Song)
+- **Flair_Tag**: A Reddit post flair marker ([Teaser], [MV], [Album], or [Audio])
 - **Results_Display**: The organized presentation of filtered Release_Posts in the browser
 - **Reddit_JSON_API**: Reddit's public JSON endpoint for accessing subreddit data
 - **Custom_Date_Range**: A user-specified start and end date for filtering posts
@@ -51,16 +51,19 @@ The K-pop Releases Tracker is a browser-based tool that fetches and displays K-p
 
 ### Requirement 4: Release Categorization
 
-**User Story:** As a user, I want releases organized by type, so that I can quickly find music videos, albums, or songs.
+**User Story:** As a user, I want releases organized by type, so that I can quickly find teasers, music videos, albums, or songs.
 
 #### Acceptance Criteria
 
-1. THE Tracker SHALL categorize Release_Posts into three Release_Types: Music Video, Album, and Song
-2. WHEN a Release_Post contains the Flair_Tag "[MV]", THE Tracker SHALL categorize it as Music Video
-3. WHEN a Release_Post contains the Flair_Tag "[Album]", THE Tracker SHALL categorize it as Album
-4. WHEN a Release_Post contains the Flair_Tag "[Audio]", THE Tracker SHALL categorize it as Song
-5. THE Tracker SHALL display categorized Release_Posts in separate sections within the Results_Display
-6. THE Tracker SHALL sort posts within each category by newest first
+1. THE Tracker SHALL categorize Release_Posts into four Release_Types: Teaser, Music Video, Album, and Song
+2. WHEN a Release_Post contains the Flair_Tag "[Teaser]", THE Tracker SHALL categorize it as Teaser
+3. WHEN a Release_Post contains the Flair_Tag "[MV]", THE Tracker SHALL categorize it as Music Video
+4. WHEN a Release_Post contains the Flair_Tag "[Album]", THE Tracker SHALL categorize it as Album
+5. WHEN a Release_Post contains the Flair_Tag "[Audio]", THE Tracker SHALL categorize it as Song
+6. THE Tracker SHALL display categorized Release_Posts in separate sections within the Results_Display
+7. THE Tracker SHALL sort posts within each category by newest first
+8. WHEN in "Teasers" mode, THE Tracker SHALL display only the Teaser section
+9. WHEN in "New Releases" mode, THE Tracker SHALL display only Music Video, Album, and Song sections
 
 ### Requirement 5: Results Display
 
